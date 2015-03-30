@@ -8,7 +8,7 @@ unsigned int reverse_endian(unsigned int value){
 		|((value<<8)&0x00ff0000);
 }
 
-void parse_image_file(FILE *image_fp, mnist_data * mh){
+void parse_image_file(FILE *image_fp, mnist_data * mh, int READ_SIZE){
 	//mnist_data *mh = (mnist_data *)malloc(sizeof(mnist_data));
 
 	//Read Header
@@ -33,8 +33,8 @@ void parse_image_file(FILE *image_fp, mnist_data * mh){
 		return;
 	}
 
-	//Read Only Train_Size Items
-	mh->num_items = TRAIN_SIZE;
+	//Read Only Read_Size Items
+	mh->num_items = READ_SIZE;
 	
 	//Declare Data
 	char *data = (char *)malloc(sizeof(char)*mh->num_items*mh->num_rows*mh->num_cols);
@@ -57,7 +57,7 @@ void parse_image_file(FILE *image_fp, mnist_data * mh){
 	printf("------------------------\n");
 }
 
-void parse_label_file(FILE *label_fp, mnist_data * mh){
+void parse_label_file(FILE *label_fp, mnist_data * mh, int READ_SIZE){
 	//mnist_data *mh = (mnist_data *)malloc(sizeof(mnist_data));
 	mh->num_rows = 0;
 	mh->num_cols = 0;
@@ -72,8 +72,8 @@ void parse_label_file(FILE *label_fp, mnist_data * mh){
 	mh->num_items = reverse_endian(mh->num_items);
 	#endif
 
-	//Read Only Train_Size Items
-	mh->num_items = TRAIN_SIZE;
+	//Read Only Size of items Items
+	mh->num_items = READ_SIZE;
 	
 	printf("------------------------\n");
 	printf("Magic_Number: %d\nNum_Items: %d\n", mh->magic_num, mh->num_items); 

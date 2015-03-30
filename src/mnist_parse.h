@@ -21,8 +21,8 @@ typedef struct{
 }mnist_data;
 
 //Function Declarations
-void parse_image_file(FILE *image_fp, mnist_data * mh);
-void parse_label_file(FILE *label_fp, mnist_data * mh);
+void parse_image_file(FILE *image_fp, mnist_data * mh, int READ_SIZE);
+void parse_label_file(FILE *label_fp, mnist_data * mh, int READ_SIZE);
 
 void mnist_print_image(mnist_data *d);
 void mnist_print_label(mnist_data *d);
