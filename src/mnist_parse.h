@@ -8,9 +8,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define TRAIN_SIZE 1000
-#define TEST_SIZE 500
-
 //Struct Definition
 typedef struct{
 	unsigned int magic_num;

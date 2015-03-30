@@ -1,11 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "rbm.h"
 #include "mnist_parse.h"
 
 #define TRAIN_SIZE 1000
 #define TEST_SIZE 500
 
+#define NUM_EPOCHS 100
+#define NUM_HIDDEN 100
+#define BATCH_SIZE 10
 
 void load_datasets(mnist_data *train_data, mnist_data *train_label_data, mnist_data *test_data, mnist_data *test_label_data){
 	FILE *train_images_fp;
@@ -55,11 +59,7 @@ int main(void){
 	
     //Load Data Sets
     load_datasets(train_data, train_label_data, test_data, test_label_data);
-	print_mnist_data(test_data, test_label_data);
-
-
-
-
+	//print_mnist_data(train_data, train_label_data);
 
 	free(train_data);
 	free(train_label_data);

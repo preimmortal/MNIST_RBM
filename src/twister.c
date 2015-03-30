@@ -41,6 +41,7 @@
    email: m-mat @ math.sci.hiroshima-u.ac.jp (remove space)
 */
 
+#include "rbm.h"
 #include <stdio.h>
 
 /* Period parameters */
