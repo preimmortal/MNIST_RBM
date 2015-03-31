@@ -7,7 +7,8 @@
 #define TRAIN_SIZE 1000
 #define TEST_SIZE 500
 
-#define NUM_EPOCHS 100
+#define NUM_EPOCHS 10
+#define NUM_BATCHES 10
 #define NUM_HIDDEN 100
 #define BATCH_SIZE 10
 
@@ -42,13 +43,24 @@ void load_datasets(mnist_data *train_data, mnist_data *train_label_data, mnist_d
     test_labels_fp = fopen("../datasets/t10k-labels.idx1-ubyte", "r");
     parse_label_file(test_images_fp, test_label_data, TEST_SIZE);
     fclose(test_labels_fp);
-	
-
-
 
 	//mnist_print_label(train_label_data);
 }
 
+
+
+void train_rbm(mnist_data *train_data, mnist_data *train_label_data){
+    printf("Training RBM\n");
+    int e, b, f;
+    //Train over Epochs
+    for(e=0; e<NUM_EPOCHS; e++){
+        for(b=0; b<NUM_BATCHES; b++){
+            //Phase 1
+
+
+        }
+    }
+}
 
 int main(void){
 	mnist_data *train_data = (mnist_data *)malloc(sizeof(mnist_data));
@@ -60,9 +72,18 @@ int main(void){
     //Load Data Sets
     load_datasets(train_data, train_label_data, test_data, test_label_data);
 	//print_mnist_data(train_data, train_label_data);
+    
+    //printf("%f\n",rand_twister());
 
+    train_rbm(train_data, train_label_data);
+
+    //Free Malloc Data
 	free(train_data);
 	free(train_label_data);
+	free(test_data);
+	free(test_label_data);
+
+
 	return 0;
 }
 

@@ -25,6 +25,9 @@ void parse_image_file(FILE *image_fp, mnist_data * mh, int READ_SIZE){
 	mh->num_cols = reverse_endian(mh->num_cols);
 	#endif
 
+	//Read Only Read_Size Items
+	mh->num_items = READ_SIZE;
+
 	printf("------------------------\n");
 	printf("Magic_Number: %d\nNum_Items: %d\nNum_Rows: %d\nNum_Cols: %d\n", mh->magic_num, mh->num_items, mh->num_rows, mh->num_cols); 
 	
@@ -33,10 +36,7 @@ void parse_image_file(FILE *image_fp, mnist_data * mh, int READ_SIZE){
 		return;
 	}
 
-	//Read Only Read_Size Items
-	mh->num_items = READ_SIZE;
-	
-	//Declare Data
+    //Declare Data
 	char *data = (char *)malloc(sizeof(char)*mh->num_items*mh->num_rows*mh->num_cols);
 
 	printf("Reading Data..\n");
