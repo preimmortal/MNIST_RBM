@@ -3,10 +3,13 @@
 
 #include "rbm.h"
 #include "mnist_parse.h"
-#include "train.h"
 
 #define TRAIN_SIZE 1000
 #define TEST_SIZE 500
+
+#define NUM_EPOCHS 10
+#define NUM_BATCHES 10
+#define NUM_HIDDEN 100
 
 void load_datasets(mnist_data *train_data, mnist_data *train_label_data, mnist_data *test_data, mnist_data *test_label_data){
 	FILE *train_images_fp;
@@ -44,6 +47,30 @@ void load_datasets(mnist_data *train_data, mnist_data *train_label_data, mnist_d
 }
 
 
+
+void train_rbm(mnist_data *train_data, mnist_data *train_label_data){
+    printf("Training RBM\n");
+    int e, b, f, p;
+    int i, j;
+    int BATCH_SIZE = train_data->num_items/NUM_BATCHES;
+    //Train over Epochs
+    for(e=0; e<NUM_EPOCHS; e++){
+        for(b=0; b<NUM_BATCHES; b++){
+            for(p=b*BATCH_SIZE; p<(b*BATCH_SIZE+BATCH_SIZE); p++){
+                //Phase 1
+                for(f=0; f<NUM_FACTORS; f++){ //Serial Loop
+                    for(i=0; i<
+
+                }
+                
+                //printf("Batch: %d - %d\n", b, p);
+            }
+
+
+        }
+    }
+}
+
 int main(void){
 	mnist_data *train_data = (mnist_data *)malloc(sizeof(mnist_data));
 	mnist_data *train_label_data = (mnist_data *)malloc(sizeof(mnist_data));
@@ -53,7 +80,7 @@ int main(void){
 	
     //Load Data Sets
     load_datasets(train_data, train_label_data, test_data, test_label_data);
-	print_mnist_data(train_data, train_label_data);
+	//print_mnist_data(train_data, train_label_data);
     
     //printf("%f\n",rand_twister());
 

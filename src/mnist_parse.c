@@ -140,3 +140,9 @@ void print_mnist_data(mnist_data *train_data, mnist_data *train_label_data){
 		printf("\n");
 	}
 }
+
+
+void free_data(mnist_data *d){
+    free(d->data);
+    free(d);
+}

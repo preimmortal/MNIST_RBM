@@ -25,5 +25,6 @@ void mnist_print_image(mnist_data *d);
 void mnist_print_label(mnist_data *d);
 
 void print_mnist_data(mnist_data *train_data, mnist_data *train_label_data);
+void free_data(mnist_data *d);
 
 #endif
