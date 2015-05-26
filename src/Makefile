@@ -1,12 +1,12 @@
 CC=gcc
 CFLAGS=-I.
-SOURCES= rbm.c mnist_parse.c twister.c train.c
+SOURCES= rbm.c mnist_parse.c train.c
 DEPS= mnist_parse.h rbm.h train.h
 OBJECTS=rbm.o mnist_parse.o
 EXECUTABLE=rbm
 
 all:
-	$(CC) -o $(EXECUTABLE) $(SOURCES)
+	$(CC) -o $(EXECUTABLE) $(SOURCES) -lm
 
 run:
 	./rbm

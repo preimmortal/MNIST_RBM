@@ -8,23 +8,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//Struct Definition
-typedef struct{
-	unsigned int magic_num;
-	unsigned int num_items;
-	unsigned int num_rows;
-	unsigned int num_cols;
-	char *data;
-}mnist_data;
+#define TRAIN_SIZE 1000
+#define COLS 28
+#define ROWS 28
+#define COLROW 784
 
 //Function Declarations
-void parse_image_file(FILE *image_fp, mnist_data * mh, int READ_SIZE);
-void parse_label_file(FILE *label_fp, mnist_data * mh, int READ_SIZE);
+void parse_simple_image_file(FILE *image_fp, char data[TRAIN_SIZE][COLROW]);
+void parse_simple_label_file(FILE *label_fp, char data[TRAIN_SIZE]);
 
-void mnist_print_image(mnist_data *d);
-void mnist_print_label(mnist_data *d);
-
-void print_mnist_data(mnist_data *train_data, mnist_data *train_label_data);
-void free_data(mnist_data *d);
+void print_simple_mnist_data(
+        char train_data[TRAIN_SIZE][COLROW], 
+        char train_label_data[TRAIN_SIZE]);
 
 #endif

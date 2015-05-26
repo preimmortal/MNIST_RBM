@@ -3,49 +3,24 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 #include "mnist_parse.h"
 
-#define NUM_EPOCHS 10
-#define NUM_BATCHES 10
 #define NUM_HIDDEN 100
-#define NUM_FACTORS 100
+#define NUM_VISIBLE 784
+#define TRAIN_SIZE 1000
+#define NUM_EPOCHS 50
+#define LEARN_RATE 0.1
 
-//Define Restricted Boltzmann Machine Params
-typedef struct{
-    int *XFAC;
-    int *YFAC;
-    int *XYFAC;
-    int *tem;
+#define ROWS 28
+#define COLS 28
+#define COLROW 784
+//Function Declarations
 
-    float *hprob;
-    int **h;
-    
-    int *HFAC;
-    int *XHFAC;
-    int *YHFAC;
-
-    int *YPFAC;
-    int *XYPFAC;
-
-    int *HPFAC;
-    int *XHPFAC;
-    int *YPHPFAC;
-
-    int **DELTA_WY;
-    int **WY;
-
-    int **DELTA_WX;
-    int **WX;
-
-    int **DELTA_WH;
-    int **WH;
-}rbm;
-
-//Function Declartions
-
-void train_rbm(mnist_data *train_data, mnist_data *train_label_data);
-
+void train_rbm(
+        char train_data[TRAIN_SIZE][COLROW], 
+        char train_label_data[TRAIN_SIZE]);
 
 
 #endif
